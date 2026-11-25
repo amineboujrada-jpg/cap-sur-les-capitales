@@ -36,7 +36,7 @@ jobs:
         run: |
           npm init -y > /dev/null
           npm install --no-audit --no-fund @capacitor/core@8 @capacitor/cli@8 @capacitor/android@8
-          npx cap init "Capitales" com.amineboujrada.capitales --web-dir www
+          npx cap init "Capitalia" com.amineboujrada.capitalia --web-dir www
           npx cap add android
           npx cap sync android
 
@@ -58,23 +58,23 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug bundleRelease --no-daemon
-          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Cap-sur-les-capitales.apk"
-          cp app/build/outputs/bundle/release/app-release.aab "$GITHUB_WORKSPACE/Cap-sur-les-capitales-unsigned.aab"
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Capitalia.apk"
+          cp app/build/outputs/bundle/release/app-release.aab "$GITHUB_WORKSPACE/Capitalia-unsigned.aab"
 
       # Le bundle est signé ensuite avec la clé d'envoi (jamais stockée dans ce dépôt public).
       - uses: actions/upload-artifact@v4
         with:
-          name: Cap-sur-les-capitales-aab-non-signe
-          path: Cap-sur-les-capitales-unsigned.aab
+          name: Capitalia-aab-non-signe
+          path: Capitalia-unsigned.aab
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Cap-sur-les-capitales-apk
-          path: Cap-sur-les-capitales.apk
+          name: Capitalia-apk
+          path: Capitalia.apk
 
       - name: Déposer le bundle non signé sur la branche builds
         run: |
-          mkdir out && cp Cap-sur-les-capitales-unsigned.aab out/ && cd out
+          mkdir out && cp Capitalia-unsigned.aab out/ && cd out
           echo "versionCode ${{ github.run_number }} · commit ${{ github.sha }}" > VERSION.txt
           git init -q && git checkout -q -b builds && git add .
           git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "Bundle ${{ github.run_number }}"
@@ -88,6 +88,6 @@ jobs:
           name: Application Android ${{ github.run_number }}
           body: |
             APK à installer sur Android (hors Play Store).
-            Sur le téléphone : télécharger Cap-sur-les-capitales.apk, l'ouvrir, puis autoriser l'installation depuis cette source si Android le demande.
-          files: Cap-sur-les-capitales.apk
+            Sur le téléphone : télécharger Capitalia.apk, l'ouvrir, puis autoriser l'installation depuis cette source si Android le demande.
+          files: Capitalia.apk
           make_latest: true

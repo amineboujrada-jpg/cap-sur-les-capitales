@@ -1,7 +1,7 @@
 "use strict";
 // Service worker : met l'app en cache pour qu'elle marche hors ligne.
 // Change VERSION à chaque mise en ligne pour que les téléphones récupèrent la nouvelle version.
-const VERSION = "cap-v5";
+const VERSION = "cap-v6";
 const APP_SHELL = [
   "./",
   "./index.html",

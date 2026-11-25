@@ -1,6 +1,6 @@
 {
-  "name": "Cap sur les capitales",
-  "short_name": "Capitales",
+  "name": "Capitalia",
+  "short_name": "Capitalia",
   "description": "Un quiz en français pour apprendre les capitales et les drapeaux du monde.",
   "lang": "fr",
   "start_url": "./",

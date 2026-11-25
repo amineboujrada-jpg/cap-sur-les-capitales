@@ -1,4 +1,4 @@
-# Cap sur les capitales
+# Capitalia (Cap sur les capitales)
 
 Quiz pour apprendre les capitales et les drapeaux du monde (184 pays), en application web installable (PWA) qui fonctionne hors ligne.
 

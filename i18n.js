@@ -7,7 +7,7 @@ const LANG_NAMES = { fr: "Français", en: "English", es: "Español", ar: "الع
 
 const STRINGS = {
   fr: {
-    appName: "Cap sur les capitales",
+    appName: "Capitalia",
     metaDescription: "Un quiz pour apprendre les capitales et les drapeaux du monde.",
     skip: "Aller au jeu",
     stats: "Mes stats",
@@ -111,7 +111,7 @@ const STRINGS = {
   },
 
   en: {
-    appName: "Capitals Quest",
+    appName: "Capitalia",
     metaDescription: "A quiz to learn the world's capitals and flags.",
     skip: "Skip to the game",
     stats: "My stats",
@@ -215,7 +215,7 @@ const STRINGS = {
   },
 
   es: {
-    appName: "Rumbo a las capitales",
+    appName: "Capitalia",
     metaDescription: "Un quiz para aprender las capitales y las banderas del mundo.",
     skip: "Ir al juego",
     stats: "Mis estadísticas",
@@ -319,7 +319,7 @@ const STRINGS = {
   },
 
   ar: {
-    appName: "رحلة العواصم",
+    appName: "كابيتاليا",
     metaDescription: "اختبار لتعلّم عواصم وأعلام دول العالم.",
     skip: "انتقل إلى اللعبة",
     stats: "إحصائياتي",
