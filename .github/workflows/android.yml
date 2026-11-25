@@ -1,0 +1,77 @@
+name: Application Android (APK)
+
+# Fabrique l'APK à chaque envoi sur main (ou à la demande, onglet Actions),
+# puis le publie dans « Releases » pour le télécharger depuis le téléphone.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Préparer les fichiers de l'app
+        run: |
+          mkdir -p build/www
+          cp index.html app.js countries.js names.js i18n.js flags.js style.css base.css manifest.webmanifest build/www/
+          cp -r assets build/www/
+
+      - name: Créer le projet Android (Capacitor)
+        working-directory: build
+        run: |
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
+          npx cap init "Capitales" com.amineboujrada.capitales --web-dir www
+          npx cap add android
+          npx cap sync android
+
+      - name: Icône et permissions
+        working-directory: build/android/app/src/main
+        run: |
+          rm -rf res/mipmap-anydpi-v26
+          for pair in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
+            dir="res/mipmap-${pair%%:*}"; size="${pair##*:}"
+            mkdir -p "$dir"
+            convert "$GITHUB_WORKSPACE/assets/icon-maskable-512.png" -resize "${size}x${size}" "$dir/ic_launcher.png"
+            convert "$GITHUB_WORKSPACE/assets/icon-maskable-512.png" -resize "${size}x${size}" \( +clone -threshold -1 -negate -fill white -draw "circle $((size/2)),$((size/2)) $((size/2)),0" \) -alpha off -compose copy_opacity -composite "$dir/ic_launcher_round.png"
+          done
+          grep -q "android.permission.VIBRATE" AndroidManifest.xml || sed -i 's#<application#<uses-permission android:name="android.permission.VIBRATE" />\n    <application#' AndroidManifest.xml
+          sed -i 's#<resources>#<resources>\n    <color name="splash_bg">\#153a33</color>#' res/values/styles.xml || true
+
+      - name: Compiler l'APK
+        working-directory: build/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Cap-sur-les-capitales.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Cap-sur-les-capitales-apk
+          path: Cap-sur-les-capitales.apk
+
+      - name: Publier dans Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-v${{ github.run_number }}
+          name: Application Android ${{ github.run_number }}
+          body: |
+            APK à installer sur Android (hors Play Store).
+            Sur le téléphone : télécharger Cap-sur-les-capitales.apk, l'ouvrir, puis autoriser l'installation depuis cette source si Android le demande.
+          files: Cap-sur-les-capitales.apk
+          make_latest: true
