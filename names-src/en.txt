@@ -1,0 +1,184 @@
+FR|Paris|Lyon
+ES|Madrid|Barcelona
+IT|Rome|Milan
+DE|Berlin|Munich
+PT|Lisbon|Porto
+GB|London|Manchester
+IE|Dublin|Cork
+BE|Brussels|Antwerp
+NL|Amsterdam|Rotterdam
+LU|Luxembourg|Esch-sur-Alzette
+CH|Bern|Zurich
+AT|Vienna|Salzburg
+LI|Vaduz|Schaan
+AD|Andorra la Vella|Escaldes-Engordany
+SM|San Marino|Serravalle
+GR|Athens|Thessaloniki
+CY|Nicosia|Limassol
+PL|Warsaw|Kraków
+CZ|Prague|Brno
+SK|Bratislava|Košice
+HU|Budapest|Debrecen
+HR|Zagreb|Split
+SI|Ljubljana|Maribor
+RS|Belgrade|Novi Sad
+ME|Podgorica|Kotor
+BA|Sarajevo|Mostar
+AL|Tirana|Durrës
+MK|Skopje|Ohrid
+RO|Bucharest|Cluj-Napoca
+BG|Sofia|Plovdiv
+NO|Oslo|Bergen
+SE|Stockholm|Gothenburg
+DK|Copenhagen|Aarhus
+FI|Helsinki|Turku
+IS|Reykjavík|Akureyri
+EE|Tallinn|Tartu
+LV|Riga|Jūrmala
+LT|Vilnius|Kaunas
+MT|Valletta|Mdina
+MD|Chișinău|Bălți
+UA|Kyiv|Lviv
+BY|Minsk|Brest
+RU|Moscow|Saint Petersburg
+MA|Rabat|Casablanca
+DZ|Algiers|Oran
+TN|Tunis|Sfax
+LY|Tripoli|Benghazi
+EG|Cairo|Alexandria
+SD|Khartoum|Omdurman
+SS|Juba|Wau
+TD|N'Djamena|Moundou
+SN|Dakar|Saint-Louis
+GM|Banjul|Serekunda
+GW|Bissau|Bafatá
+CV|Praia|Mindelo
+MR|Nouakchott|Nouadhibou
+ML|Bamako|Timbuktu
+NE|Niamey|Agadez
+BF|Ouagadougou|Bobo-Dioulasso
+GN|Conakry|Kankan
+SL|Freetown|Bo
+LR|Monrovia|Buchanan
+CI|Yamoussoukro|Abidjan
+GH|Accra|Kumasi
+TG|Lomé|Sokodé
+BJ|Porto-Novo|Cotonou
+NG|Abuja|Lagos
+CM|Yaoundé|Douala
+CF|Bangui|Berbérati
+GQ|Malabo|Bata
+ST|São Tomé|Santo António
+GA|Libreville|Port-Gentil
+CG|Brazzaville|Pointe-Noire
+CD|Kinshasa|Lubumbashi
+AO|Luanda|Benguela
+ET|Addis Ababa|Gondar
+ER|Asmara|Massawa
+DJ|Djibouti|Ali Sabieh
+SO|Mogadishu|Hargeisa
+KE|Nairobi|Mombasa
+UG|Kampala|Entebbe
+RW|Kigali|Butare
+BI|Gitega|Bujumbura
+TZ|Dodoma|Dar es Salaam
+MW|Lilongwe|Blantyre
+ZM|Lusaka|Livingstone
+ZW|Harare|Bulawayo
+MZ|Maputo|Beira
+NA|Windhoek|Walvis Bay
+BW|Gaborone|Francistown
+LS|Maseru|Teyateyaneng
+MG|Antananarivo|Toamasina
+MU|Port Louis|Curepipe
+SC|Victoria|Anse Royale
+KM|Moroni|Mutsamudu
+JP|Tokyo|Osaka
+CN|Beijing|Shanghai
+KR|Seoul|Busan
+KP|Pyongyang|Hamhung
+MN|Ulaanbaatar|Erdenet
+IN|New Delhi|Mumbai
+PK|Islamabad|Karachi
+BD|Dhaka|Chittagong
+NP|Kathmandu|Pokhara
+BT|Thimphu|Paro
+MV|Malé|Addu
+AF|Kabul|Kandahar
+MM|Naypyidaw|Yangon
+TH|Bangkok|Chiang Mai
+VN|Hanoi|Ho Chi Minh City
+KH|Phnom Penh|Siem Reap
+LA|Vientiane|Luang Prabang
+MY|Kuala Lumpur|George Town
+BN|Bandar Seri Begawan|Kuala Belait
+ID|Jakarta|Surabaya
+TL|Dili|Baucau
+PH|Manila|Cebu
+KZ|Astana|Almaty
+UZ|Tashkent|Samarkand
+KG|Bishkek|Osh
+TJ|Dushanbe|Khujand
+TM|Ashgabat|Türkmenabat
+GE|Tbilisi|Batumi
+AM|Yerevan|Gyumri
+AZ|Baku|Ganja
+TR|Ankara|Istanbul
+SY|Damascus|Aleppo
+LB|Beirut|Byblos
+JO|Amman|Aqaba
+IQ|Baghdad|Basra
+IR|Tehran|Isfahan
+SA|Riyadh|Jeddah
+KW|Kuwait City|Al Ahmadi
+BH|Manama|Riffa
+QA|Doha|Al Wakrah
+AE|Abu Dhabi|Dubai
+OM|Muscat|Salalah
+CA|Ottawa|Toronto
+US|Washington, D.C.|New York
+MX|Mexico City|Guadalajara
+GT|Guatemala City|Antigua Guatemala
+BZ|Belmopan|Belize City
+HN|Tegucigalpa|San Pedro Sula
+SV|San Salvador|Santa Ana
+NI|Managua|León
+CR|San José|Cartago
+PA|Panama City|Colón
+CU|Havana|Santiago de Cuba
+JM|Kingston|Montego Bay
+HT|Port-au-Prince|Cap-Haïtien
+DO|Santo Domingo|Santiago de los Caballeros
+BS|Nassau|Freeport
+BB|Bridgetown|Speightstown
+TT|Port of Spain|San Fernando
+GD|St. George's|Gouyave
+LC|Castries|Vieux Fort
+VC|Kingstown|Barrouallie
+DM|Roseau|Portsmouth
+AG|St. John's|All Saints
+KN|Basseterre|Charlestown
+AR|Buenos Aires|Córdoba
+BR|Brasília|Rio de Janeiro
+CL|Santiago|Valparaíso
+UY|Montevideo|Punta del Este
+PY|Asunción|Ciudad del Este
+PE|Lima|Cusco
+EC|Quito|Guayaquil
+CO|Bogotá|Medellín
+VE|Caracas|Maracaibo
+GY|Georgetown|Linden
+SR|Paramaribo|Nieuw Nickerie
+AU|Canberra|Sydney
+NZ|Wellington|Auckland
+FJ|Suva|Nadi
+PG|Port Moresby|Lae
+WS|Apia|Salelologa
+TO|Nukuʻalofa|Neiafu
+VU|Port Vila|Luganville
+SB|Honiara|Gizo
+MH|Majuro|Ebeye
+FM|Palikir|Kolonia
+PW|Ngerulmud|Koror
+TV|Funafuti|Nanumea
+KI|South Tarawa|Kiritimati

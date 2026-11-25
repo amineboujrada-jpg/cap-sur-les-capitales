@@ -1,0 +1,69 @@
+:root {
+  color-scheme: light;
+  --paper: #f6f3e9;
+  --surface: #fffdf6;
+  --ink: #163731;
+  --muted: #4e6257;
+  --border: #17393130;
+  --light-ink: #dce9d7;
+  --hero: #153a33;
+  --gold: #f8ce6c;
+  --gold-hover: #ffda84;
+  --yes-ink: #1c5035;
+  --yes-bg: #e4efdf;
+  --no-ink: #7a332a;
+  --no-bg: #f6e6dd;
+  --focus: #326957;
+  --on-hero: #fffdf6;
+  --hover: #efece0;
+  --on-gold: #163731;
+  --body: "Outfit", system-ui, sans-serif;
+  --display: "Fraunces", Georgia, serif;
+  --xs: clamp(.75rem,.73rem + .11vw,.825rem);
+  --sm: clamp(.875rem,.84rem + .19vw,.975rem);
+  --base: clamp(1rem,.96rem + .2vw,1.125rem);
+  --lg: clamp(1.25rem,1.15rem + .5vw,1.625rem);
+  --xl: clamp(2rem,1.45rem + 2.3vw,3.35rem);
+  --hero-text: clamp(2.8rem,1.6rem + 5vw,5.75rem);
+  --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.25rem;
+  --s6: 1.5rem; --s8: 2rem; --s10: 2.5rem; --s12: 3rem; --s16: 4rem;
+  --r1: .375rem; --r2: .75rem; --r3: 1.125rem;
+  --ease: 180ms cubic-bezier(.16,1,.3,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 280px; }
+body { margin: 0; min-height: 100vh; color: var(--ink); background: var(--paper); font: 500 var(--base)/1.5 var(--body); }
+h1, h2, p, ul { margin: 0; }
+button, input { font: inherit; }
+button { color: inherit; }
+button, label { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), label { cursor: pointer; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+.skip { position: absolute; inset: var(--s2) auto auto var(--s2); z-index: 4; padding: var(--s2) var(--s4); background: var(--surface); transform: translateY(-160%); }
+.skip:focus { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Thème sombre : automatique (réglage du téléphone) ou forcé dans les Réglages. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0d1f1b; --surface: #15302a; --ink: #e9f0e6; --muted: #a8bcb0; --border: #e9f0e626;
+    --hero: #1c4a40; --yes-ink: #9fdab3; --yes-bg: #183a2a; --no-ink: #f3a497; --no-bg: #3e2420;
+    --focus: #7fc6aa; --hover: #1d3d35;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0d1f1b; --surface: #15302a; --ink: #e9f0e6; --muted: #a8bcb0; --border: #e9f0e626;
+  --hero: #1c4a40; --yes-ink: #9fdab3; --yes-bg: #183a2a; --no-ink: #f3a497; --no-bg: #3e2420;
+  --focus: #7fc6aa; --hover: #1d3d35;
+}
+:root[lang="ar"] { --body: "Cairo", system-ui, sans-serif; --display: "Cairo", system-ui, sans-serif; }
+:root[lang="ar"] .eyebrow, :root[lang="ar"] .top-label, :root[lang="ar"] .small-legend { letter-spacing: 0; }

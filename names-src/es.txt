@@ -1,0 +1,84 @@
+ES|Madrid|Barcelona
+IT|Roma|Milán
+DE|Berlín|Múnich
+PT|Lisboa|Oporto
+GB|Londres|Mánchester
+BE|Bruselas|Amberes
+LU|Luxemburgo|Esch-sur-Alzette
+CH|Berna|Zúrich
+AT|Viena|Salzburgo
+AD|Andorra la Vieja|Escaldes-Engordany
+GR|Atenas|Salónica
+CY|Nicosia|Limasol
+PL|Varsovia|Cracovia
+CZ|Praga|Brno
+RS|Belgrado|Novi Sad
+RO|Bucarest|Cluj-Napoca
+SE|Estocolmo|Gotemburgo
+DK|Copenhague|Aarhus
+IS|Reikiavik|Akureyri
+MT|La Valeta|Mdina
+UA|Kiev|Leópolis
+RU|Moscú|San Petersburgo
+DZ|Argel|Orán
+TN|Túnez|Sfax
+LY|Trípoli|Bengasi
+EG|El Cairo|Alejandría
+SD|Jartum|Omdurmán
+SS|Yuba|Wau
+TD|Yamena|Moundou
+ML|Bamako|Tombuctú
+ET|Adís Abeba|Gondar
+ER|Asmara|Masaua
+DJ|Yibuti|Ali Sabieh
+SO|Mogadiscio|Hargeisa
+TZ|Dodoma|Dar es-Salam
+NA|Windhoek|Walvis Bay
+MU|Port Louis|Curepipe
+CN|Pekín|Shanghái
+KR|Seúl|Busan
+KP|Pionyang|Hamhung
+MN|Ulán Bator|Erdenet
+IN|Nueva Delhi|Bombay
+BD|Daca|Chittagong
+NP|Katmandú|Pokhara
+AF|Kabul|Kandahar
+MM|Naipyidó|Rangún
+TH|Bangkok|Chiang Mai
+VN|Hanói|Ciudad Ho Chi Minh
+KH|Nom Pen|Siem Riep
+LA|Vientián|Luang Prabang
+PH|Manila|Cebú
+UZ|Taskent|Samarcanda
+KG|Biskek|Osh
+TJ|Dusambé|Juyand
+TM|Asjabad|Türkmenabat
+GE|Tiflis|Batumi
+AM|Ereván|Guiumri
+AZ|Bakú|Ganyá
+TR|Ankara|Estambul
+SY|Damasco|Alepo
+LB|Beirut|Biblos
+JO|Amán|Áqaba
+IQ|Bagdad|Basora
+IR|Teherán|Isfahán
+SA|Riad|Yeda
+KW|Kuwait|Al Ahmadi
+BH|Manama|Riffa
+QA|Doha|Al Wakrah
+AE|Abu Dabi|Dubái
+OM|Mascate|Salalah
+US|Washington D. C.|Nueva York
+MX|Ciudad de México|Guadalajara
+GT|Ciudad de Guatemala|Antigua Guatemala
+BZ|Belmopán|Ciudad de Belice
+PA|Ciudad de Panamá|Colón
+CU|La Habana|Santiago de Cuba
+HT|Puerto Príncipe|Cabo Haitiano
+TT|Puerto España|San Fernando
+GD|Saint George's|Gouyave
+AG|Saint John's|All Saints
+BR|Brasilia|Río de Janeiro
+UY|Montevideo|Punta del Este
+PE|Lima|Cuzco
+KI|Tarawa Sur|Kiritimati

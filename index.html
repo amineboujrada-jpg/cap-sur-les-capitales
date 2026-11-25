@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#153a33">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Capitales">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Un quiz pour apprendre les capitales et les drapeaux du monde.">
+  <title>Cap sur les capitales</title>
+  <link rel="icon" type="image/png" href="./assets/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script>
+    // Applique le thème avant l'affichage pour éviter un flash de couleur.
+    try { const s = JSON.parse(localStorage.getItem("cap-settings")) || {}; if (s.theme === "dark" || s.theme === "light") document.documentElement.dataset.theme = s.theme; } catch (e) {}
+  </script>
+  <script src="./countries.js" defer></script>
+  <script src="./names.js" defer></script>
+  <script src="./flags.js" defer></script>
+  <script src="./i18n.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i="skip">Aller au jeu</a>
+  <header class="top shell">
+    <div class="wordmark">
+      <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m15.7 8.3-2.2 5.2-5.2 2.2 2.2-5.2 5.2-2.2Z" fill="currentColor" stroke-linejoin="round"/></svg>
+      <span data-i="appName">Cap sur les capitales</span>
+    </div>
+    <div class="top-actions">
+      <button id="stats-btn" type="button" class="top-label stats-link" data-i="stats">Mes stats</button>
+      <button id="settings-btn" type="button" class="icon-btn" data-i-aria="settings" aria-label="Réglages">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1.11 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1.03Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="shell" tabindex="-1">
+    <section id="menu" aria-labelledby="menu-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow hero-tag"><span class="mark" aria-hidden="true"></span> <span data-i="heroTag">Le quiz des capitales</span></span>
+          <h1 id="menu-title" tabindex="-1"><span data-i="heroA">Cap sur les</span> <span class="hero-accent" data-i="heroB">capitales.</span></h1>
+          <p data-i="heroText">Capitales, pays ou drapeaux : quatre choix, une seule bonne réponse. À toi de jouer !</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"><img src="./assets/compass.webp" width="900" height="600" alt="" fetchpriority="high" decoding="async"></div>
+      </div>
+
+      <form id="setup" class="boarding">
+        <fieldset>
+          <legend data-i="destination">Choisis ta destination</legend>
+          <p class="hint" data-i="destinationHint">Fais le tour du monde ou entraîne-toi par continent.</p>
+          <div class="regions options">
+            <label><input type="radio" name="region" value="world" checked><span data-i="region_world">Monde</span></label>
+            <label><input type="radio" name="region" value="eu"><span data-i="region_eu">Europe</span></label>
+            <label><input type="radio" name="region" value="af"><span data-i="region_af">Afrique</span></label>
+            <label><input type="radio" name="region" value="as"><span data-i="region_as">Asie</span></label>
+            <label><input type="radio" name="region" value="am"><span data-i="region_am">Amériques</span></label>
+            <label><input type="radio" name="region" value="oc"><span data-i="region_oc">Océanie</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="level-set">
+          <legend class="small-legend" data-i="level">Niveau</legend>
+          <div class="levels options">
+            <label><input type="radio" name="level" value="easy"><span><b data-i="level_easy">Facile</b><small data-i="levelSub_easy">Pays connus</small></span></label>
+            <label><input type="radio" name="level" value="medium" checked><span><b data-i="level_medium">Moyen</b><small data-i="levelSub_medium">Tous les pays</small></span></label>
+            <label><input type="radio" name="level" value="hard"><span><b data-i="level_hard">Difficile</b><small data-i="levelSub_hard">Avec chrono</small></span></label>
+          </div>
+          <p id="level-hint" class="hint"></p>
+        </fieldset>
+
+        <div class="setup-row">
+          <fieldset>
+            <legend class="small-legend" data-i="modeTitle">Mode de jeu</legend>
+            <div class="modes options">
+              <label><input type="radio" name="mode" value="capital" checked><span><b data-i="mode_capital">Pays → capitale</b><small data-i="modeSub_capital">Trouve la capitale</small></span></label>
+              <label><input type="radio" name="mode" value="country"><span><b data-i="mode_country">Capitale → pays</b><small data-i="modeSub_country">Trouve le pays</small></span></label>
+              <label><input type="radio" name="mode" value="flag"><span><b data-i="mode_flag">Drapeaux</b><small data-i="modeSub_flag">Trouve le pays</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="small-legend" data-i="length">Longueur</legend>
+            <div class="counts options">
+              <label><input type="radio" name="count" value="10" checked><span>10</span></label>
+              <label><input type="radio" name="count" value="20"><span>20</span></label>
+              <label><input type="radio" name="count" value="30"><span>30</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="boarding-actions">
+          <p class="boarding-note"><span id="note-count" class="note-number">10</span> <span data-i="noteQuestions">questions</span> <span class="middle-dot" aria-hidden="true">·</span> <span id="note-pool"></span> <span class="middle-dot" aria-hidden="true">·</span> <span id="note-timer"></span> <span id="note-best" class="note-best" hidden></span></p>
+          <button id="start-btn" type="submit" class="btn primary"><span data-i="start">Commencer</span> <span class="arrow" aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section id="quiz" class="play" hidden aria-labelledby="country-title">
+      <div class="play-top">
+        <button id="back" type="button" class="btn text-btn"><span class="arrow" aria-hidden="true">←</span> <span data-i="home">Accueil</span></button>
+        <div class="pills">
+          <div class="score-pill timer-pill" id="timer-pill" hidden><span data-i="time">Temps</span> <strong id="timer">15</strong></div>
+          <div class="score-pill streak-pill" id="streak-pill"><span data-i="streak">Série</span> <strong id="streak">0</strong></div>
+          <div class="score-pill"><span data-i="score">Score</span> <strong id="score">0</strong></div>
+        </div>
+      </div>
+      <div class="progress-meta">
+        <span id="round-label" class="eyebrow"></span>
+        <span id="question-count"></span>
+      </div>
+      <div id="progress" class="progress" role="progressbar" data-i-aria="progressLabel" aria-label="Questions terminées" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"></div>
+      <div class="passport">
+        <div class="passport-copy">
+          <p id="question-prompt"></p>
+          <h1 id="country-title" tabindex="-1" aria-describedby="question-prompt"><span id="flag" class="flag" aria-hidden="true"></span><span id="title-text"></span></h1>
+          <span id="continent" class="passport-label"></span>
+        </div>
+        <div class="passport-art" aria-hidden="true"></div>
+      </div>
+      <div id="choices" class="choices" role="group" data-i-aria="choicesLabel" aria-label="Choix de réponse"></div>
+      <div class="quiz-actions">
+        <p id="feedback" role="status" aria-atomic="true"></p>
+        <button id="pass" type="button" class="btn text-btn"><span data-i="skipQuestion">Passer</span> <span class="arrow" aria-hidden="true">→</span></button>
+        <button id="next" type="button" class="btn primary" hidden><span id="next-label"></span><span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section id="results" class="play" hidden aria-labelledby="result-title">
+      <div class="play-top">
+        <button id="results-home" type="button" class="btn text-btn"><span class="arrow" aria-hidden="true">←</span> <span data-i="home">Accueil</span></button>
+        <p id="results-region" class="eyebrow"></p>
+      </div>
+      <div class="summary">
+        <div>
+          <p class="eyebrow hero-tag"><span class="mark" aria-hidden="true"></span> <span data-i="arrival">Arrivée</span></p>
+          <h1 id="result-title" tabindex="-1" data-i="gameOver">Partie terminée !</h1>
+          <p id="result-message"></p>
+          <p id="result-extra" class="result-extra"></p>
+        </div>
+        <div class="score-stamp" data-i-aria="finalScore" aria-label="Score final">
+          <strong id="result-score" class="score-value">0 / 10</strong>
+          <span id="result-stamp-label"></span>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button id="replay" type="button" class="btn primary"><span data-i="newGame">Nouvelle partie</span> <span class="arrow" aria-hidden="true">→</span></button>
+        <button id="retry" type="button" class="btn secondary" data-i="retry">Rejouer mes erreurs</button>
+      </div>
+      <section id="corrections" aria-labelledby="corrections-title">
+        <h2 id="corrections-title" data-i="toRemember">À retenir</h2>
+        <ul id="mistakes"></ul>
+      </section>
+    </section>
+
+    <section id="stats" class="play" hidden aria-labelledby="stats-title">
+      <div class="play-top">
+        <button id="stats-home" type="button" class="btn text-btn"><span class="arrow" aria-hidden="true">←</span> <span data-i="home">Accueil</span></button>
+        <p class="eyebrow" data-i="travelLog">Carnet de voyage</p>
+      </div>
+      <h1 id="stats-title" class="section-title" tabindex="-1" data-i="statsTitle">Mes statistiques</h1>
+      <p id="stats-empty" class="hint" data-i="statsEmpty"></p>
+      <div id="stats-body">
+        <div class="stat-tiles">
+          <div class="stat-tile"><strong id="st-games">0</strong><span data-i="gamesPlayed">parties jouées</span></div>
+          <div class="stat-tile"><strong id="st-answers">0</strong><span data-i="answersGiven">réponses données</span></div>
+          <div class="stat-tile"><strong id="st-rate">0 %</strong><span data-i="successRate">de bonnes réponses</span></div>
+          <div class="stat-tile"><strong id="st-known">0</strong><span id="st-mastered"></span></div>
+        </div>
+        <h2 class="sub-title" data-i="byContinent">Par continent</h2>
+        <ul id="st-regions" class="bars"></ul>
+        <h2 class="sub-title" data-i="weakPoints">Tes points faibles</h2>
+        <p class="hint" data-i="weakHint"></p>
+        <ul id="st-weak" class="weak-list"></ul>
+        <div class="result-actions">
+          <button id="weak-btn" type="button" class="btn primary"><span data-i="reviewWeak">Réviser mes points faibles</span> <span class="arrow" aria-hidden="true">→</span></button>
+          <button id="reset-btn" type="button" class="btn secondary" data-i="resetStats">Effacer mes stats</button>
+        </div>
+        <div id="reset-confirm" class="confirm" hidden>
+          <p data-i="resetConfirm"></p>
+          <div class="confirm-actions">
+            <button id="reset-yes" type="button" class="btn danger" data-i="resetYes">Oui, tout effacer</button>
+            <button id="reset-no" type="button" class="btn secondary" data-i="cancel">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="play" hidden aria-labelledby="settings-title">
+      <div class="play-top">
+        <button id="settings-home" type="button" class="btn text-btn"><span class="arrow" aria-hidden="true">←</span> <span data-i="home">Accueil</span></button>
+      </div>
+      <h1 id="settings-title" class="section-title" tabindex="-1" data-i="settings">Réglages</h1>
+      <form id="settings-form" class="settings-card">
+        <div class="setting">
+          <label for="set-lang" class="setting-label" data-i="language">Langue</label>
+          <select id="set-lang" name="lang"></select>
+        </div>
+        <fieldset class="setting">
+          <legend class="setting-label" data-i="theme">Thème</legend>
+          <div class="segmented options">
+            <label><input type="radio" name="theme" value="auto"><span data-i="themeAuto">Automatique</span></label>
+            <label><input type="radio" name="theme" value="light"><span data-i="themeLight">Clair</span></label>
+            <label><input type="radio" name="theme" value="dark"><span data-i="themeDark">Sombre</span></label>
+          </div>
+        </fieldset>
+        <div class="setting setting-toggle">
+          <div>
+            <label for="set-sound" class="setting-label" data-i="sound">Sons</label>
+            <p class="hint" data-i="soundHint"></p>
+          </div>
+          <input id="set-sound" name="sound" type="checkbox" class="switch" role="switch">
+        </div>
+        <div class="setting setting-toggle" id="vibrate-row">
+          <div>
+            <label for="set-vibrate" class="setting-label" data-i="vibration">Vibrations</label>
+            <p class="hint" data-i="vibrationHint"></p>
+          </div>
+          <input id="set-vibrate" name="vibrate" type="checkbox" class="switch" role="switch">
+        </div>
+        <fieldset class="setting">
+          <legend class="setting-label" data-i="timerSetting">Durée du chrono</legend>
+          <div class="segmented options" id="timer-options">
+            <label><input type="radio" name="timer" value="10"><span data-s="10">10 s</span></label>
+            <label><input type="radio" name="timer" value="15"><span data-s="15">15 s</span></label>
+            <label><input type="radio" name="timer" value="20"><span data-s="20">20 s</span></label>
+            <label><input type="radio" name="timer" value="30"><span data-s="30">30 s</span></label>
+          </div>
+        </fieldset>
+        <button id="settings-done" type="submit" class="btn primary settings-done" data-i="done">Terminé</button>
+      </form>
+    </section>
+    <noscript><p>Active JavaScript dans ton navigateur pour jouer au quiz. / Turn on JavaScript to play.</p></noscript>
+  </main>
+
+  <footer class="footer shell">
+    <span class="footer-name" data-i="appName">Cap sur les capitales</span>
+    <span class="footer-links"><a id="ref-link" href="https://fr.wikipedia.org/wiki/Liste_des_capitales_du_monde" target="_blank" rel="noopener noreferrer"><span data-i="referenceList">Liste de référence</span> <span aria-hidden="true">↗</span></a> <a href="https://github.com/twitter/twemoji" target="_blank" rel="noopener noreferrer" data-i="flagsCredit">Drapeaux Twemoji (CC-BY 4.0)</a></span>
+  </footer>
+</body>
+</html>
