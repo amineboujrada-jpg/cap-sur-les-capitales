@@ -30,6 +30,8 @@ jobs:
           mkdir -p build/www
           cp index.html app.js countries.js names.js i18n.js flags.js style.css base.css manifest.webmanifest build/www/
           cp -r assets build/www/
+          # Icônes réservées à la version web : inutiles dans l'app Android
+          rm -f build/www/assets/icon-512.png build/www/assets/icon-maskable-512.png build/www/assets/apple-touch-icon.png
 
       - name: Créer le projet Android (Capacitor)
         working-directory: build
