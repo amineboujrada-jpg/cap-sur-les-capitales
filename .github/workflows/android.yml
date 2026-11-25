@@ -44,14 +44,8 @@ jobs:
         working-directory: build/android/app/src/main
         run: |
           rm -rf res/mipmap-anydpi-v26
-          for pair in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
-            dir="res/mipmap-${pair%%:*}"; size="${pair##*:}"
-            mkdir -p "$dir"
-            convert "$GITHUB_WORKSPACE/assets/icon-maskable-512.png" -resize "${size}x${size}" "$dir/ic_launcher.png"
-            convert "$GITHUB_WORKSPACE/assets/icon-maskable-512.png" -resize "${size}x${size}" \( +clone -threshold -1 -negate -fill white -draw "circle $((size/2)),$((size/2)) $((size/2)),0" \) -alpha off -compose copy_opacity -composite "$dir/ic_launcher_round.png"
-          done
+          cp -r "$GITHUB_WORKSPACE"/android-icons/mipmap-* res/
           grep -q "android.permission.VIBRATE" AndroidManifest.xml || sed -i 's#<application#<uses-permission android:name="android.permission.VIBRATE" />\n    <application#' AndroidManifest.xml
-          sed -i 's#<resources>#<resources>\n    <color name="splash_bg">\#153a33</color>#' res/values/styles.xml || true
 
       - name: Compiler l'APK
         working-directory: build/android
