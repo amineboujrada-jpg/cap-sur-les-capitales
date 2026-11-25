@@ -72,7 +72,16 @@ jobs:
           name: Cap-sur-les-capitales-apk
           path: Cap-sur-les-capitales.apk
 
+      - name: Déposer le bundle non signé sur la branche builds
+        run: |
+          mkdir out && cp Cap-sur-les-capitales-unsigned.aab out/ && cd out
+          echo "versionCode ${{ github.run_number }} · commit ${{ github.sha }}" > VERSION.txt
+          git init -q && git checkout -q -b builds && git add .
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "Bundle ${{ github.run_number }}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" builds
+
       - name: Publier dans Releases
+        continue-on-error: true
         uses: softprops/action-gh-release@v2
         with:
           tag_name: android-v${{ github.run_number }}
