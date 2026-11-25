@@ -17,8 +17,8 @@
   --on-hero: #fffdf6;
   --hover: #efece0;
   --on-gold: #163731;
-  --body: "Outfit", system-ui, sans-serif;
-  --display: "Fraunces", Georgia, serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --display: "Noto Serif", Georgia, "Times New Roman", serif;
   --xs: clamp(.75rem,.73rem + .11vw,.825rem);
   --sm: clamp(.875rem,.84rem + .19vw,.975rem);
   --base: clamp(1rem,.96rem + .2vw,1.125rem);
@@ -65,5 +65,5 @@ img { display: block; max-width: 100%; }
   --hero: #1c4a40; --yes-ink: #9fdab3; --yes-bg: #183a2a; --no-ink: #f3a497; --no-bg: #3e2420;
   --focus: #7fc6aa; --hover: #1d3d35;
 }
-:root[lang="ar"] { --body: "Cairo", system-ui, sans-serif; --display: "Cairo", system-ui, sans-serif; }
+:root[lang="ar"] { --body: system-ui, "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; --display: system-ui, "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif; }
 :root[lang="ar"] .eyebrow, :root[lang="ar"] .top-label, :root[lang="ar"] .small-legend { letter-spacing: 0; }
